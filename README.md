@@ -2,7 +2,9 @@
 
 *A few basic exercises in Python to practice the language, trying to understand and increase the level with each exercise*
 
-## Youtube Downloader
+## Youtube Downloader 
+
+   [Exercise Link](projects/youtube_downloader.py)
 
 1. **Integration of Python Libraries**
    - **pytube**: Utilized the `pytube` library to fetch video metadata and download YouTube videos.
@@ -30,6 +32,8 @@
 
 ## Password Generator
 
+[Exercise Link](projects/password_generator.py)
+
 1. **User Interaction**
    - **Input Handling**: Utilized `input()` for receiving and processing user inputs like password length and complexity.
    - **Error Management**: Implemented `try-except` for validating user inputs and handling errors gracefully.
@@ -50,6 +54,8 @@
    - **Modularity and Clarity**: Maintained clear function definitions and logical segments, adhering to design principles that improve code comprehension and maintainability.
 
 ## Agenda Contactos
+
+[Exercise Link](projects/agenda_contactos)
 
 1. **Object-Oriented Programming (OOP)**
 
