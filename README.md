@@ -1,8 +1,8 @@
 # Python Exercises
 
-*A few basic exercises in Python to practice the language, trying to understand and increase the level with each exercise*
+A few basic exercises in Python to practice the language, trying to understand and increase the level with each exercise
 
-## Youtube Downloader 
+## Youtube Downloader
 
    [Exercise Link](projects/youtube_downloader.py)
 
@@ -87,3 +87,39 @@
 
    - **Separation of Concerns**: Segregated program logic into distinct classes (`Contacto`, `Agenda`, `Menu`), adhering to the single responsibility principle for improved code clarity and maintainability.
    - **Error Handling**: Implemented checks to manage scenarios where contacts were not found or the contact list was empty, ensuring appropriate user feedback.
+
+## ChatBot
+
+[Exercise Link](projects/chatbot)
+
+1. **Integration of Python Libraries**
+
+   - **NLTK**: Integrated `nltk` for natural language processing tasks including tokenization and lemmatization.
+   - **sklearn**: Utilized `sklearn` for TF-IDF vectorization and SVM model training.
+
+2. **Natural Language Processing Techniques**
+
+   - **Tokenization and Lemmatization**: Implemented to tokenize user input and reduce words to their base forms for effective analysis.
+
+3. **TF-IDF Vectorization**
+
+   - **TF-IDF (Term Frequency-Inverse Document Frequency)**: Applied `TF-IDF` to convert textual data into numerical vectors, enhancing machine learning model compatibility.
+
+4. **Machine Learning with SVM**
+
+   - **SVM (Support Vector Machine)**: Employed `SVM` with a linear kernel for intent classification based on TF-IDF features.
+   - **Model Training**: Trained SVM classifier to predict user intent from input phrases.
+
+5. **Functional Chatbot Development**
+
+   - **Intent Classification**: Classified user intents using the SVM model and TF-IDF vectors.
+   - **Dynamic Responses**: Generated responses based on predicted intents mapped to predefined responses stored in a structured JSON file.
+
+6. **User-Chatbot Interaction**
+
+   - **Console Interface**: Implemented a console-based interface for seamless interaction with the chatbot.
+   - **Input Handling**: Managed user inputs, processed through intent classification, and displayed corresponding chatbot responses.
+
+7. **JSON for Intent Definitions**
+
+   - **Intent Definition**: Structured user input patterns and responses using a JSON format for clear intent mapping and response retrieval.
