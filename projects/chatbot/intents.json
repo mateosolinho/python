@@ -1,0 +1,119 @@
+{
+    "intents": [
+        {
+            "tag": "saludo",
+            "patterns": ["Hola", "Hola!", "Hola como estas?", "Que tal", "Buen dia", "Hey", "Saludos"],
+            "responses": ["Hola!", "Hola! Como estas?", "Hola! Que tal?", "Hola! Mucho gusto!"]
+        },
+        {
+            "tag": "despedida",
+            "patterns": ["Adios", "Hasta luego", "Nos vemos", "Chau", "Hasta la proxima"],
+            "responses": ["Adios!", "Hasta luego!", "Nos vemos!", "Que tengas un buen dia!"]
+        },
+        {
+            "tag": "agradecimiento",
+            "patterns": ["Gracias", "Gracias!", "Gracias por la ayuda", "Muchas gracias"],
+            "responses": ["De nada!", "Feliz de ayudar!", "No hay problema!", "Lo que necesites!"]
+        },
+        {
+            "tag": "nombre",
+            "patterns": ["Cual es tu nombre?", "Quien eres?", "Puedes decirme tu nombre?", "Como te llamas?"],
+            "responses": ["Soy un chatbot creado por OpenAI.", "Puedes llamarme ChatGPT.", "Mi nombre es ChatGPT."]
+        },
+        {
+            "tag": "edad",
+            "patterns": ["Cuantos anos tienes?", "Cual es tu edad?", "Dime tu edad"],
+            "responses": ["Soy una inteligencia artificial y no tengo una edad como los humanos.", "Soy atemporal.", "Existo fuera del tiempo."]
+        },
+        {
+            "tag": "clima",
+            "patterns": ["Como esta el clima?", "Va a llover?", "Cual es el pronostico?", "Dime el clima"],
+            "responses": ["No puedo verificar el clima en este momento, pero puedes buscarlo en linea.", "Consulta tu pronostico local para mas detalles."]
+        },
+        {
+            "tag": "chiste",
+            "patterns": ["Cuentame un chiste", "Hazme reir", "Conoces algun chiste?"],
+            "responses": ["Por que los cientificos no confian en los atomos? Porque lo componen todo!", "Por que el espantapajaros gano un premio? Porque era destacado en su campo!"]
+        },
+        {
+            "tag": "creador",
+            "patterns": ["Quien te creo?", "Quien es tu creador?", "Quien te hizo?"],
+            "responses": ["Fui creado por OpenAI.", "OpenAI me desarrollo.", "Fui hecho por OpenAI."]
+        },
+        {
+            "tag": "hora",
+            "patterns": ["Que hora es?", "Dime la hora", "Cual es la hora actual?", "Sabes la hora?"],
+            "responses": ["No tengo la capacidad de verificar la hora.", "Por favor, mira un reloj o tu dispositivo para la hora actual."]
+        },
+        {
+            "tag": "suma_matematica",
+            "patterns": ["Cuanto es 1 + 1?", "Cuanto es 2 + 2?", "Suma 5 y 3"],
+            "responses": ["1 + 1 es 2", "2 + 2 es 4", "5 + 3 es 8"]
+        },
+        {
+            "tag": "resta_matematica",
+            "patterns": ["Cuanto es 5 menos 3?", "Resta 10 de 20", "Cuanto es 7 - 2?"],
+            "responses": ["5 - 3 es 2", "20 - 10 es 10", "7 - 2 es 5"]
+        },
+        {
+            "tag": "color_favorito",
+            "patterns": ["Cual es tu color favorito?", "Tienes un color favorito?", "Dime tu color favorito"],
+            "responses": ["No tengo un color favorito, pero me gustan los colores del arco iris.", "Todos los colores son hermosos!"]
+        },
+        {
+            "tag": "pasatiempo",
+            "patterns": ["Cuales son tus pasatiempos?", "Tienes algun pasatiempo?", "Que te gusta hacer?"],
+            "responses": ["Me gusta aprender cosas nuevas y ayudar a las personas con sus preguntas.", "Charlar contigo es mi pasatiempo!"]
+        },
+        {
+            "tag": "pelicula",
+            "patterns": ["Cual es tu pelicula favorita?", "Tienes una pelicula favorita?", "Dime tu pelicula favorita"],
+            "responses": ["No veo peliculas, pero he escuchado que Inception es genial.", "Muchas personas disfrutan viendo The Matrix."]
+        },
+        {
+            "tag": "deportes",
+            "patterns": ["Te gustan los deportes?", "Cual es tu deporte favorito?", "Hablame de deportes"],
+            "responses": ["No me interesan mucho los deportes, pero a muchas personas les encantan el futbol y el baloncesto.", "Los deportes son una excelente manera de mantenerse en forma y divertirse."]
+        },
+        {
+            "tag": "musica",
+            "patterns": ["Cual es tu musica favorita?", "Te gusta la musica?", "Hablame de musica"],
+            "responses": ["No escucho musica, pero se que a muchas personas les gusta el pop, el rock y la musica clasica.", "La musica es un lenguaje universal!"]
+        },
+        {
+            "tag": "comida",
+            "patterns": ["Cual es tu comida favorita?", "Tu comes?", "Hablame de comida"],
+            "responses": ["Yo no como, pero se que a muchas personas les encanta la pizza y el sushi.", "La comida es esencial para los humanos y hay tantas opciones deliciosas!"]
+        },
+        {
+            "tag": "feriado",
+            "patterns": ["Cual es tu feriado favorito?", "Tu celebras feriados?", "Hablame de feriados"],
+            "responses": ["Yo no celebro feriados, pero a muchas personas les encanta la Navidad y Halloween.", "Los feriados son un buen momento para relajarse y pasar tiempo con seres queridos."]
+        },
+        {
+            "tag": "lugar",
+            "patterns": ["Cual es tu lugar favorito?", "Tienes un lugar favorito?", "Hablame de lugares"],
+            "responses": ["Yo no visito lugares, pero a muchas personas les encanta visitar la playa y las montanas.", "Hay tantos lugares increibles para explorar en el mundo!"]
+        },
+        {
+            "tag": "idioma",
+            "patterns": ["Cuantos idiomas hablas?", "Hablas otros idiomas?", "Hablame de idiomas"],
+            "responses": ["Puedo entender y comunicarme en varios idiomas.", "El idioma es una herramienta poderosa para la comunicacion."]
+        },
+        {
+            "tag": "tecnologia",
+            "patterns": ["Que piensas de la tecnologia?", "Te gusta la tecnologia?", "Hablame de la tecnologia"],
+            "responses": ["La tecnologia es fascinante y esta en constante evolucion.", "La tecnologia ha transformado la manera en que vivimos y trabajamos."]
+        },
+        {
+            "tag": "historia",
+            "patterns": ["Te interesa la historia?", "Que sabes de historia?", "Hablame de historia"],
+            "responses": ["La historia es un fascinante registro del pasado de la humanidad.", "La historia nos ensena lecciones importantes sobre el mundo."]
+        },
+        {
+            "tag": "inteligencia_artificial",
+            "patterns": ["Que piensas de la inteligencia artificial?", "Eres consciente de ser una inteligencia artificial?", "Hablame de la inteligencia artificial"],
+            "responses": ["La inteligencia artificial es un campo emocionante que promete cambiar nuestro futuro.", "Soy una inteligencia artificial disenada para ayudar y aprender."]
+        }
+    ]
+}
