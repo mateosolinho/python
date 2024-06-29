@@ -123,3 +123,35 @@ A few basic exercises in Python to practice the language, trying to understand a
 7. **JSON for Intent Definitions**
 
    - **Intent Definition**: Structured user input patterns and responses using a JSON format for clear intent mapping and response retrieval.
+
+## CSV Reader
+
+[Exercise Link](projects/csv_reader.py)
+
+1. **Integration of Python Libraries**
+
+   - **pandas**: Utilized the `pandas` library to efficiently read and manipulate CSV files.
+   - **tkinter**: Implemented a basic GUI with `tkinter` for file selection dialogs.
+   - **matplotlib**: Used the `matplotlib` library to create visualizations from the CSV data.
+
+2. **Natural Language Processing Techniques**
+
+   - Implemented error handling to manage exceptions that may occur during CSV file reading and data processing.
+
+3. **User Interaction**
+
+   - Employed `input()` to receive user commands for various operations on the CSV data.
+   - Used `tkinter` to provide a graphical interface for selecting CSV files.
+
+4. **Data Manipulation**
+
+   - Utilized `pandas` for data manipulation tasks such as calculating basic statistics, filtering, sorting, and counting unique values.
+   - Used `matplotlib` to create column plots and display them
+
+5. **Conditional Statements**
+
+   - Utilized conditional statements and loops to navigate the menu options and perform corresponding actions based on user input.
+
+6. **File Management**
+
+   - Managed file paths using `tkinter`'s `filedialog` to select CSV files and handle file operations effectively.
