@@ -155,3 +155,42 @@ A few basic exercises in Python to practice the language, trying to understand a
 6. **File Management**
 
    - Managed file paths using `tkinter`'s `filedialog` to select CSV files and handle file operations effectively.
+
+## Neuronal Network in TensorFlow
+
+[Exercise Link](projects/csv_reader.py)
+
+1. **Integration of Python Libraries**
+
+   - **tensorflow**: Imported `tensorflow` to construct and train the neural network.
+   - **numpy**: Used `numpy` to handle input and output data.
+   - **matplotlib**: Used the `matplotlib` library to create visualizations from the loss magnitude.
+
+2. **Declaring Training Data**
+
+   - Declared arrays of temperature data in Celsius and Fahrenheit to train the model.
+
+3. **Constructing the Neural Network**
+
+   - Experimented with building a simple neural network with a `single neuron` and a `single connection`.
+   - Constructed a more complex neural network with `two hidden layers` and one `output layer`.
+
+4. **Compiling the Model**
+
+   - Compiled the model, specifying the `Adam` optimizer with a learning rate of 0.1 and the `mean_squared_error` loss function.
+
+5. **Training the Model**
+
+   - Trained the model with `1000 epochs` and set verbose to False to avoid console outputs.
+
+6. **Visualizing the Training Process**
+
+   - Used `matplotlib` to visualize the loss magnitude over the number of epochs, observing how the network stops learning after a certain number of epochs
+
+7. **Making Predictions**
+
+   - Made a prediction with the trained model to verify its accuracy with previously unseen data.
+
+8. **Exploring Weights and Biases**
+
+   - Inspected the weights and biases of each neuron in the model to understand how the network optimized its connections.

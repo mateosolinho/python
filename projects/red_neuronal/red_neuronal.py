@@ -17,7 +17,7 @@ import numpy as np
 celsius = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)
 fahrenheit = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
 
-"""En la parte comentada se hace una red neuronal con solamente una neurona y una conexión (peor predicción), en la otra parte se declara una red neuronal con 3 neuronas y una salida"""
+"""En la parte comentada se hace una red neuronal con solamente una neurona y una conexión (peor predicción), en la otra parte se declara una red neuronal con 2 capas de 3 neuronas y una salida"""
 
 # capa = tf.keras.layers.Dense(units=1, input_shape=[1])
 # modelo = tf.keras.Sequential([capa])
