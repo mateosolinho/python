@@ -154,18 +154,18 @@ prediccion = modelo.predict(imagen)
 
 print(f"Prediccion: {nombres_clases[np.argmax(prediccion[0])]}")
 
-# Exportar el modelo a un navegador
-modelo.save('modelo_exportado.h5')
+# # Exportar el modelo a un navegador
+# modelo.save('modelo_exportado.h5')
 
-# Instalar tensorflowjs para convertir el h5 a un modelo que pueda cargar tensorflowjs en un explorador
-!pip install tensorflowjs
+# # Instalar tensorflowjs para convertir el h5 a un modelo que pueda cargar tensorflowjs en un explorador
+# !pip install tensorflowjs
 
-#Convertir el archivo h5 a formato de tensorflowjs
-!mkdir tfjs_target_dir
-!tensorflowjs_converter --input_format keras modelo_exportado.h5 tfjs_target_dir
+# #Convertir el archivo h5 a formato de tensorflowjs
+# !mkdir tfjs_target_dir
+# !tensorflowjs_converter --input_format keras modelo_exportado.h5 tfjs_target_dir
 
-# Comprobacion de si creo la carpeta
-!ls
+# # Comprobacion de si creo la carpeta
+# !ls
 
-# Ver el contenido de la carpeta
-!ls tfjs_target_dir
+# # Ver el contenido de la carpeta
+# !ls tfjs_target_dir
