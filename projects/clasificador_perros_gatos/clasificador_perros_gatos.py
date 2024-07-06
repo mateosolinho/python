@@ -269,8 +269,8 @@ modeloCNN2_AD.fit(
 
 modeloCNN_AD.save('perros-gatos-cnn-ad.h5')
 
-!pip install tensorflowjs
+# !pip install tensorflowjs
 
-!mkdir carpeta_salida
+# !mkdir carpeta_salida
 
-!tensorflowjs_converter --input_format keras perros-gatos-cnn-ad.h5 carpeta_salida
+# !tensorflowjs_converter --input_format keras perros-gatos-cnn-ad.h5 carpeta_salida
