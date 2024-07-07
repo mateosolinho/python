@@ -1,5 +1,54 @@
 # Python Exercises
 
+## Comparison of ANN and CNN Architectures for Image Classification
+
+   [Exercise Link](projects/clasificador_perros_gatos)
+
+1. **Integration of Python Libraries**
+   - **tensorflow**: Imported `tensorflow` and `tensorflow_datasets` to handle the neural network and dataset operations.
+   - **numpy**: Used `numpy` to manage image data and labels.
+   - **matplotlib**: Utilized `matplotlib` for visualizing images and training progress.
+   - **cv2**: Employed `cv2` for image resizing and color conversion.
+
+2. **Declaring and Preprocessing Data**
+   - Loaded the `cats_vs_dogs` dataset from TensorFlow Datasets.
+   - Visualized a subset of the dataset to check the images and labels.
+   - Preprocessed images by resizing to 100x100 pixels and converting to grayscale.
+   - Structured data into arrays for training and labels.
+
+3. **Constructing the Neuronal Network**
+   - **Dense Model**:
+     - Flattened input images.
+     - Added two `Dense` layers with 150 units each and ReLU activation.
+     - Added a final `Dense` layer with 1 unit and sigmoid activation for binary classification.
+   - **Convolutional Neural Network (CNN) Model**:
+     - Added convolutional layers (`Conv2D`) and max-pooling layers (`MaxPooling2D`).
+     - Flattened the output and added dense layers with ReLU and sigmoid activation.
+   - **Enhanced CNN Model with Dropout**:
+     - Similar to the CNN model but included a `Dropout` layer for regularization.
+
+4. **Compiling the Models**
+   - Compiled all models using the `Adam` optimizer and `binary_crossentropy` loss function.
+   - Set metrics to `accuracy`.
+
+5. **Training the Models**
+   - **Dense Model**: Trained with `100 epochs`, `batch_size=32`, and a validation split of `0.15`. Logged training progress using TensorBoard.
+   - **CNN Model**: Trained with similar settings as the Dense model, but for a different model structure.
+   - **Enhanced CNN Model**: Trained with `100 epochs`, `batch_size=32`, and a validation split of `0.15`.
+
+6. **Visualizing Training and Data Argumentation**
+   - Visualized the first few images of the dataset.
+   - Applied data augmentation using `ImageDataGenerator` to enhance training data.
+   - Visualized augmented images.
+
+7. **Training with Augmented Data**
+   - **Dense Model with Augmentation**: Trained using augmented data with `100 epochs` and validation data.
+   - **CNN Model with Augmentation**: Trained for `150 epochs` with augmentation.
+   - **Enhanced CNN Model with Augmentation**: Trained for `100 epochs` with augmentation.
+
+8. **Saving the Model**
+   - Saved the best-performing CNN model with augmentation to a file named `perros-gatos-cnn-ad.h5`.
+
 ## Image Classifier with Tensorflow
 
    [Exercise Link](projects/clasificador_imagenes)
