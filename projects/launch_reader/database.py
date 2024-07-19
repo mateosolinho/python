@@ -67,6 +67,9 @@ def insert_data_to_mysql(df, host, database, user, batch_size=1000):
             """
             cursor.execute(create_table_query)
             
+            # Empty the table before inserting new data
+            cursor.execute("TRUNCATE TABLE launches;")
+            
             insert_query = """
             INSERT INTO launches (Name, Date, Rocket, Provider, Pad, Mission_Description, Mission_Type, Status, Fail_Reason, Image)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)

@@ -75,7 +75,7 @@ def merge_data(existing_data, new_data):
 def main():
     filename = "new_previous_launches.json"
     progress_filename = "progress.json"
-    base_url = "https://ll.thespacedevs.com/2.2.0/launch/previous/?limit=10&offset="
+    base_url = "https://ll.thespacedevs.com/2.2.0/launch/previous/?limit=1&offset="
     
     # Load existing data
     existing_data = load_existing_data(filename)
@@ -84,7 +84,7 @@ def main():
     next_url = load_progress(progress_filename)
     if next_url is None:
         # Start from the initial offset if no progress is found /////////////////////// FECHA 18/07/2024
-        current_offset = 6915
+        current_offset = 0
         next_url = base_url + str(current_offset)
     else:
         # Extract the current offset from the URL if resuming
