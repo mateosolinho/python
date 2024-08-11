@@ -10,7 +10,8 @@ vessel.control.throttle = 1
 time.sleep(1)
 
 #Liftoff
-print("Launch in 3")
+print("Launch in ...")
+print("3")
 time.sleep(1)
 print("2")
 time.sleep(1)
@@ -33,8 +34,6 @@ print('Booster separation')
 vessel.control.activate_next_stage()
 
 ## Reaching Apoapsis
-
-
 mean_altitude = conn.get_call(getattr, vessel.flight(), 'mean_altitude')
 expr = conn.krpc.Expression.greater_than(
     conn.krpc.Expression.call(mean_altitude),
@@ -75,10 +74,11 @@ event = conn.krpc.add_event(expr)
 with event.condition:
     event.wait()
 
+print('Parachute deployed')
 vessel.control.activate_next_stage()
 
 while vessel.flight(vessel.orbit.body.reference_frame).vertical_speed < -0.1:
     print('Altitude = %.1f meters' % vessel.flight().surface_altitude)
     time.sleep(1)
 
-print('Landed!')
+print('TouchDown!')
