@@ -152,8 +152,8 @@ def read_speed_and_altitude_from_video(video_path):
                 break
 
             # Verificar si el tiempo detectado es 60 segundos y detener el programa
-            if time_in_seconds == 60:
-                print("Tiempo alcanzado: 60 segundos. Deteniendo el programa.")
+            if time_in_seconds == 240:
+                print("Tiempo alcanzado: 240 segundos. Deteniendo el programa.")
                 break  # Salir del bucle
 
     # Aquí se guardan los datos en los archivos después de salir del bucle
