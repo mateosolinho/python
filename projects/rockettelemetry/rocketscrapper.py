@@ -5,12 +5,11 @@ import numpy as np
 from concurrent.futures import ThreadPoolExecutor
 from collections import deque
 
-
 def cleanup(im):
-    """Cleanup an image by subtracting its median pixel value, then scaling it up."""
+    """Limpia una imagen restando su valor mediano de píxeles y luego escalándola."""
     arr = np.array(im, dtype=float)
     if arr.mean(axis=-1).max() < 200:
-        arr[:] = 0  # no text here, return black image
+        arr[:] = 0  # si no hay texto, devuelve imagen en negro
     else:
         arr -= np.median(arr) + 5
         arrmax = arr.max(axis=(0, 1))
@@ -19,25 +18,22 @@ def cleanup(im):
         arr = arr.clip(0, 255)
     return arr.astype(np.uint8)
 
-
 def extract_text(image_region):
-    """Extract text from the provided image region."""
+    """Extrae texto de la región de imagen proporcionada."""
     custom_config = r'--oem 3 --psm 6'
     return pytesseract.image_to_string(image_region, config=custom_config)
 
-
 def moving_average(data, window_size):
-    """Calculate the moving average for a list of numbers."""
+    """Calcula el promedio móvil de una lista de números."""
     if len(data) < window_size:
         return np.mean(data) if data else 0
     return np.mean(data[-window_size:])
-
 
 def read_speed_and_altitude_from_video(video_path):
     cap = cv2.VideoCapture(video_path)
 
     # Salta los primeros 50 segundos
-    cap.set(cv2.CAP_PROP_POS_MSEC, 350000)  # 50000 milisegundos = 50 segundos
+    cap.set(cv2.CAP_PROP_POS_MSEC, 50000)  # 50000 milisegundos = 50 segundos
 
     # Definición de la región donde se espera que esté SPEED
     rect_start_x = int(0.8 * 270)  # Cambia según el ancho del vídeo
@@ -47,6 +43,12 @@ def read_speed_and_altitude_from_video(video_path):
 
     # Definición de la región donde se espera que esté ALTITUDE
     altitude_rect_start_y = rect_start_y + rect_height  # Posición justo debajo de SPEED
+
+    # Definición de la región donde se espera que esté el contador de tiempo (valores ajustables)
+    time_rect_start_x = 905  # Cambia este valor para ajustar la posición en X
+    time_rect_start_y = 950  # Cambia este valor para ajustar la posición en Y
+    time_rect_width = 153  # Cambia este valor para ajustar el ancho del rectángulo
+    time_rect_height = 43  # Cambia este valor para ajustar la altura del rectángulo
 
     # Buffers para almacenar valores detectados
     speed_buffer = deque(maxlen=5)  # Mantiene los últimos 5 valores
@@ -59,30 +61,37 @@ def read_speed_and_altitude_from_video(video_path):
         if not ret:
             break
 
-        # Extrae la región donde se encuentra el SPEED
+        # Extrae las regiones donde se encuentran SPEED, ALTITUDE, y el contador de tiempo
         speed_region = frame[rect_start_y:rect_start_y + rect_height, rect_start_x:rect_start_x + rect_width]
-        # Extrae la región donde se encuentra la ALTITUDE
         altitude_region = frame[altitude_rect_start_y:altitude_rect_start_y + rect_height, rect_start_x:rect_start_x + rect_width]
+        time_region = frame[time_rect_start_y:time_rect_start_y + time_rect_height, time_rect_start_x:time_rect_start_x + time_rect_width]
 
         # Dibuja rectángulos sobre las regiones de interés
         cv2.rectangle(frame, (rect_start_x, rect_start_y), (rect_start_x + rect_width, rect_start_y + rect_height), (0, 255, 0), 2)
         cv2.rectangle(frame, (rect_start_x, altitude_rect_start_y), (rect_start_x + rect_width, altitude_rect_start_y + rect_height), (255, 0, 0), 2)
+        cv2.rectangle(frame, (time_rect_start_x, time_rect_start_y), (time_rect_start_x + time_rect_width, time_rect_start_y + time_rect_height), (0, 0, 255), 2)
 
         # Limpia las imágenes antes de extraer texto
         cleaned_speed_region = cleanup(speed_region)
         cleaned_altitude_region = cleanup(altitude_region)
+        cleaned_time_region = cleanup(time_region)
 
         # Realiza la extracción de texto en paralelo
         with ThreadPoolExecutor() as executor:
             speed_future = executor.submit(extract_text, cleaned_speed_region)
             altitude_future = executor.submit(extract_text, cleaned_altitude_region)
+            time_future = executor.submit(extract_text, cleaned_time_region)
 
             speed_text = speed_future.result()
             altitude_text = altitude_future.result()
+            time_text = time_future.result()
 
         # Limpia el texto detectado y extrae solo los números
         speed_numbers = re.findall(r'\d+', speed_text.replace('"', '').replace("'", '').strip())
         altitude_numbers = re.findall(r'\d+', altitude_text.replace('"', '').replace("'", '').strip())
+
+        # Mostrar el texto crudo detectado en la región de tiempo
+        print(f"Texto detectado en la región de tiempo: {time_text.strip()}")
 
         # Obtener valores detectados
         if speed_numbers:
@@ -104,6 +113,9 @@ def read_speed_and_altitude_from_video(video_path):
         # Muestra los valores promedio detectados en el frame original
         cv2.putText(frame, f"Speed: {avg_speed:.2f}", (rect_start_x, rect_start_y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
         cv2.putText(frame, f"Altitude: {avg_altitude:.2f}", (rect_start_x, altitude_rect_start_y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
+
+        # Mostrar el texto crudo detectado en la región de tiempo
+        cv2.putText(frame, f"Time: {time_text.strip()}", (time_rect_start_x, time_rect_start_y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
         # Muestra el frame original con la detección
         cv2.imshow('Original Frame', frame)
