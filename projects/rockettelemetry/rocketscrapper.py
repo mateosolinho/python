@@ -34,7 +34,9 @@ def moving_average(data, window_size):
 def time_to_seconds(time_text):
     """Convierte el tiempo en formato XX:XX:XX a segundos."""
     parts = time_text.split(':')
-    if len(parts) == 3:
+    
+    # Hay 3 partes y que ninguna está vacía
+    if len(parts) == 3 and all(part.isdigit() for part in parts):
         hours, minutes, seconds = map(int, parts)
         return hours * 3600 + minutes * 60 + seconds
     return 0  # Si no está en el formato correcto, devolver 0
@@ -42,20 +44,20 @@ def time_to_seconds(time_text):
 def read_speed_and_altitude_from_video(video_path):
     cap = cv2.VideoCapture(video_path)
 
-    cap.set(cv2.CAP_PROP_POS_MSEC, 51000)  # 50000 milisegundos = 50 segundos
+    cap.set(cv2.CAP_PROP_POS_MSEC, 30000)  # 50000 milisegundos = 50 segundos
     
     # Definición de la región donde se espera que esté SPEED
     rect_start_x = int(0.8 * 270)  # Cambiar según el ancho del vídeo
-    rect_start_y = int(0.8 * 1145)  # Cambiar según el alto del vídeo
-    rect_width = 225  # Ancho del rectángulo
-    rect_height = 30  # Alto del rectángulo
+    rect_start_y = int(0.8 * 1135)  # Cambiar según el alto del vídeo
+    rect_width = 230  # Ancho del rectángulo
+    rect_height = 35  # Alto del rectángulo
 
     # Definición de la región donde se espera que esté ALTITUDE
     altitude_rect_start_y = rect_start_y + rect_height  # Posición justo debajo de SPEED
 
     # Definición de la región donde se espera que esté el contador de tiempo
     time_rect_start_x = 905
-    time_rect_start_y = 950
+    time_rect_start_y = 940
     time_rect_width = 153
     time_rect_height = 43
 
@@ -130,6 +132,7 @@ def read_speed_and_altitude_from_video(video_path):
                 avg_speed = speed_value if isinstance(speed_value, int) else speed_value  # Usar valor detectado para la velocidad
                 avg_altitude = int(moving_average(list(altitude_buffer), window_size=5))  # Convertir a entero
                 
+                print(time_text.strip())
                 time_in_seconds = time_to_seconds(time_text.strip())
                 
                 # Guardar los datos en el CSV y en el archivo Excel
@@ -152,8 +155,8 @@ def read_speed_and_altitude_from_video(video_path):
                 break
 
             # Verificar si el tiempo detectado es 60 segundos y detener el programa
-            if time_in_seconds == 240:
-                print("Tiempo alcanzado: 240 segundos. Deteniendo el programa.")
+            if time_in_seconds == 200:
+                print("Tiempo alcanzado: 200 segundos. Deteniendo el programa.")
                 break  # Salir del bucle
 
     # Aquí se guardan los datos en los archivos después de salir del bucle
@@ -164,5 +167,5 @@ def read_speed_and_altitude_from_video(video_path):
     workbook.save('telemetry_data.xlsx')
 
 # Uso del programa
-video_path = 'C:/Users/mateo/Desktop/python/projects/rockettelemetry/ift.mp4'
+video_path = 'C:/Users/mateo/Desktop/python/projects/rockettelemetry/ift2.mp4'
 read_speed_and_altitude_from_video(video_path)
